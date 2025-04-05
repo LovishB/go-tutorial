@@ -13,4 +13,5 @@ func main() {
 	printArrays()
 	printMaps()
 	printLoops()
+	printStrings()
 }

@@ -30,7 +30,7 @@ Go`
 	fmt.Println(len(c))                    // count the number of bytes in a string
 
 	var d rune = 'A'      // go has rune instead of char
-	fmt.Println(d)        //this will print the unicode
+	fmt.Println(d)        //this will print the UTF-32 code point
 	fmt.Printf("%c\n", d) // this will print the char
 
 	var e bool = true
