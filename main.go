@@ -14,4 +14,6 @@ func main() {
 	printMaps()
 	printLoops()
 	printStrings()
+	printStructures()
+	printInterfaces()
 }
