@@ -25,6 +25,20 @@ func printArrays() {
 	for i, value := range arr3 {
 		fmt.Printf(("Index: %v, Value: %v\n"), i, value)
 	}
+
+	// Array doesn't share memory
+	var arr99 = [5]int{1, 2, 3, 4, 5}
+	var arr98 = arr99 // arr2 is a copy of arr
+	arr2[0] = 100
+	fmt.Println("arr:", arr99)  // arr is not changed
+	fmt.Println("arr2:", arr98) // arr2 is changed
+
+	// Slice shares memory
+	var slice = []int{1, 2, 3, 4, 5}
+	var slice2 = slice // slice2 is a copy of slice
+	slice2[0] = 100
+	fmt.Println("slice:", slice)   // slice is changed
+	fmt.Println("slice2:", slice2) // slice2 is changed
 }
 
 func printMaps() {
