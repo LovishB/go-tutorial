@@ -10,4 +10,7 @@ func main() {
 	printValue("Ahh function works")
 	checkDivision(10, 0)
 	checkDivision(10, 2)
+	printArrays()
+	printMaps()
+	printLoops()
 }
