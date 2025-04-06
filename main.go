@@ -19,4 +19,6 @@ func main() {
 	printPointers()
 	dbCallsWithGoroutine()
 	dbCallsWithGoroutineAndLocks()
+	dbCallsWithGoroutineAndChannels()
+	dbCallsWithGoroutineAndChannelsSimultaneousReads()
 }
