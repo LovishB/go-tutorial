@@ -21,4 +21,5 @@ func main() {
 	dbCallsWithGoroutineAndLocks()
 	dbCallsWithGoroutineAndChannels()
 	dbCallsWithGoroutineAndChannelsSimultaneousReads()
+	printGenerics()
 }
