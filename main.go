@@ -17,4 +17,6 @@ func main() {
 	printStructures()
 	printInterfaces()
 	printPointers()
+	dbCallsWithGoroutine()
+	dbCallsWithGoroutineAndLocks()
 }
