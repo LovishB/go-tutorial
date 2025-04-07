@@ -6,7 +6,8 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 
-	handler "example.com/webserver/internal/api/handlers"
+	helloHandler "example.com/webserver/internal/api/handlers/hello"
+	walletHandler "example.com/webserver/internal/api/handlers/wallet"
 )
 
 /*
@@ -28,5 +29,9 @@ func SetupRoutes(router *gin.Engine) {
 	}))
 
 	// Definning routes here
-	router.GET("/hello", handler.HelloHandler)
+	router.GET("/hello", helloHandler.HelloHandler)
+
+	router.GET("/wallet/:userId", walletHandler.GetWalletBalanceHandler)
+	router.POST("/wallet", walletHandler.CreateWalletHandler)
+	router.PUT("/wallet/:userId", walletHandler.UpdateWalletHandler)
 }
