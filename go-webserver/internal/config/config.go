@@ -8,7 +8,8 @@ import (
 )
 
 type Config struct {
-	Port string
+	Port    string
+	AuthKey string
 }
 
 /*
@@ -25,7 +26,14 @@ func LoadConfig() *Config {
 	if port == "" {
 		log.Fatalf("PORT environment variable not set")
 	}
+
+	authKey := os.Getenv("AUTH_KEY")
+	if authKey == "" {
+		log.Fatalf("AUTH_KEY environment variable not set")
+	}
+
 	return &Config{
-		Port: port,
+		Port:    port,
+		AuthKey: authKey,
 	}
 }

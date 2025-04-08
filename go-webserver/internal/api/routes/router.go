@@ -7,7 +7,9 @@ import (
 	"github.com/gin-gonic/gin"
 
 	helloHandler "example.com/webserver/internal/api/handlers/hello"
+	loginHandler "example.com/webserver/internal/api/handlers/login"
 	walletHandler "example.com/webserver/internal/api/handlers/wallet"
+	"example.com/webserver/internal/api/middleware"
 )
 
 /*
@@ -28,10 +30,12 @@ func SetupRoutes(router *gin.Engine) {
 		MaxAge:           12 * time.Hour,
 	}))
 
-	// Definning routes here
+	// Public routes
 	router.GET("/hello", helloHandler.HelloHandler)
+	router.POST("/login", loginHandler.Login)
 
-	router.GET("/wallet/:userId", walletHandler.GetWalletBalanceHandler)
-	router.POST("/wallet", walletHandler.CreateWalletHandler)
-	router.PUT("/wallet/:userId", walletHandler.UpdateWalletHandler)
+	// Protected routes
+	router.GET("/wallet/:userId", middleware.AuthMiddleware(), walletHandler.GetWalletBalanceHandler)
+	router.POST("/wallet", middleware.AuthMiddleware(), walletHandler.CreateWalletHandler)
+	router.PUT("/wallet/:userId", middleware.AuthMiddleware(), walletHandler.UpdateWalletHandler)
 }
