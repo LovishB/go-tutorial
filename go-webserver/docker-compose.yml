@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  go-webserver-postgres:
+    container_name: go-webserver-postgres
+    image: postgres:alpine
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-q', '-d', 'dxnest', '-U', 'postgres']
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    restart: always
+    ports:
+      - '5433:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=dxnest

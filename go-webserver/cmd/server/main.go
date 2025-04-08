@@ -19,6 +19,13 @@ func main() {
 	// Load the configuration
 	config := config.LoadConfig()
 
+	// Initialize the database connection
+	db, err := config.InitDB()
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %v", err)
+	}
+	defer db.Close()
+
 	router.Run(":" + config.Port)
 	log.Println("Server starting on :" + config.Port)
 }
