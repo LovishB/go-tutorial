@@ -10,6 +10,7 @@ import (
 	loginHandler "example.com/webserver/internal/api/handlers/login"
 	walletHandler "example.com/webserver/internal/api/handlers/wallet"
 	websocketHandler "example.com/webserver/internal/api/handlers/websocket"
+
 	"example.com/webserver/internal/api/middleware"
 )
 
@@ -35,6 +36,7 @@ func SetupRoutes(router *gin.Engine) {
 	router.GET("/hello", helloHandler.HelloHandler)
 	router.POST("/login", loginHandler.Login)
 	router.GET("/ws", websocketHandler.WsHandler)
+	router.GET("/broadcast", websocketHandler.WsBroadcastHandler)
 
 	// Protected routes
 	router.GET("/wallet/:userId", middleware.AuthMiddleware(), walletHandler.GetWalletBalanceHandler)
